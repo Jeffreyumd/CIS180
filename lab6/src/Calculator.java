@@ -1,37 +1,39 @@
-
+/**
+ * 
+ * @author Jeffrey A
+ * Date: 3/21/17
+ */
 public class Calculator implements Process{
 	
     protected final String PROMPT = "Input two small integers !";
-    
-	protected final int SENTINEL = -1;
-	protected int highestAge;
 	protected GUI gui;
 	
+	//instance for the Smallint 
     Smallint a = new Smallint();
 	Smallint b = new Smallint();
 	
-	private int j=0;
-	private int k=1;
+	private int j=0; // keep track of first or second input
+	private int k=1; // keep track of switch
 	
 	public Calculator()
 	{
 		 gui = new GUI (this);
-         gui.println(PROMPT + SENTINEL + "): ");
+         gui.println(PROMPT);
+         
          gui.print("Enter the first integer: ");
         
 	}
-
-
 
 	@Override
 	public void processInput(String s) {
 		// TODO Auto-generated method stub
         final String CLOSE_WINDOW_PROMPT = "\nThe execution of this project has " +
                      "been completed.\nPlease close this window when you are ready.";
-
+        
+        // switch the time of math done on the values
         switch(k)
         {
-        case 1:
+        case 1: // addition
             if(j == 0){
             	
             	gui.println(s);
@@ -51,7 +53,7 @@ public class Calculator implements Process{
             }
             
         	break;
-        case 2:
+        case 2: //subtraction
         	if(j == 0){
             	
             	gui.println(s);
@@ -71,7 +73,7 @@ public class Calculator implements Process{
             }
             
         	break;
-        case 3:
+        case 3: //Multiplication
         	if(j == 0){
             	
             	gui.println(s);
@@ -90,7 +92,7 @@ public class Calculator implements Process{
                 k++;
             }
         	break;
-        case 4:
+        case 4: // Division
         	if(j == 0){
             	
             	gui.println(s);
@@ -103,12 +105,19 @@ public class Calculator implements Process{
             	gui.println(s);
             	b.setValue(s);
             	
+            	// if the user trys to divide by 0
+            	if(b.getValue() == 0 || a.getValue() == 0)
+            	{
+            		gui.print("Undifine");
+            	} else {
+            	
             	gui.println("Results: "+ a.getValue()+" / " + b.getValue() + " = " + a.divide(b));
             	gui.println(CLOSE_WINDOW_PROMPT);
-            	gui.freeze();
+            	gui.freeze(); // end the questions
+            	}
             }
         	break;
-        } 
+        } // end of switch
 	}
 	
 	public static void main(String[] args) {
