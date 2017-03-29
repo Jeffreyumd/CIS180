@@ -12,6 +12,7 @@ public class Age implements Process {
          gui.print(PROMPT + SENTINEL + "): ");
     }
 
+
     // Postcondition: The input string s has been processed.
     public void processInput(String s) {
         final String HIGHEST_MESSAGE = "\nThe highest age is ";
@@ -35,4 +36,3 @@ public class Age implements Process {
     }
 
 }
-
